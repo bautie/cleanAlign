@@ -22,7 +22,7 @@ def cleanAlign():
 			dstJson[ fileName ] = faces
 			print( " -> copied")
 		else:
-			numDel++
+			numDel += 1
 			print( " -> deleted " + numDel )
 	
 	srcFile.close()
