@@ -6,6 +6,8 @@ import json
 def cleanAlign():
 	
 	numDel = 0
+	numCop = 0
+
 	srcFileName = "lm.json"
 	if 1 < len( sys.argv ):
 		if 0 < len( sys.argv[ 1 ] ):
@@ -20,11 +22,14 @@ def cleanAlign():
 		faces = srcJson[ fileName ]
 		if 0 < len( faces ):
 			dstJson[ fileName ] = faces
-			print( " -> copied" )
+			numCop += 1
+			print( " -> copied " + str( numCop ) )
 		else:
 			numDel += 1
 			print( " -> deleted " + str( numDel ) )
 	
+	print( "Original " + str( numCop + numDel ) + " - Deleted " + str( numDel )+ " -> New " + str( numCop ) )
+
 	srcFile.close()
 	
 	dstFile = open( os.path.splitext( srcFileName )[ 0 ] + '_cleaned.json', 'w' )
